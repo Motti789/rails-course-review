@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'static#home'
   get '/signin', to: 'session#new', as: 'signin'
   post '/signin', to: 'session#create'
-  delete '/session/', to: 'session#destroy'
+  get '/session', to: 'session#destroy'
    
   get '/signup', to: 'users#new', as: 'new_user'
   get '/users', to:'usersts#index', as: 'users'

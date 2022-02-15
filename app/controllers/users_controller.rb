@@ -10,6 +10,7 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
           redirect_to user_path(@user), notice: "Signed up successfully"
         else
+            flash[:danger] = 'Invalid email/password combination' # Not quite right!
           render 'new'
       end
     end
