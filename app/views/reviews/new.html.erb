@@ -1,0 +1,23 @@
+<br>
+<h2>New Review</h2>
+<br>
+<%= form_for @review do |f| %>
+
+
+    <div class="mb-3">
+    
+    <br>
+    <%= f.text_area :name, class: "form-control", placeholder: "Write your review here."%>
+     </div>
+
+     <div >
+     Course: <%= f.collection_select :course_id, Course.order(:name), :id, :name %>
+
+     </div>
+     <br>
+
+    <div class="mb-3">
+     <%= f.submit "Submit Review", class: "btn btn-primary" %>
+     </div>
+     <%= link_to 'Back', reviews_path(@review) %>
+<%end%>

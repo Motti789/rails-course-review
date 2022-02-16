@@ -1,0 +1,7 @@
+<h2>Reviews Show Page</h2>
+
+
+<h1><%= @review.name %></h1>
+
+<h3>Category: <%= link_to @review.user.name, user_path(@review.user) if @user.review %></h3>
+

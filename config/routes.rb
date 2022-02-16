@@ -9,13 +9,14 @@ Rails.application.routes.draw do
   get '/session', to: 'session#destroy'
    
   get '/signup', to: 'users#new', as: 'new_user'
-  get '/users', to:'usersts#index', as: 'users'
+  get '/users', to:'users#index', as: 'users'
   post '/users', to:'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
 
   
   resources :courses
   resources :reviews
+  # get '/reviews/new', to: 'reviews#new', as: 'new_review'
   
 
 end
