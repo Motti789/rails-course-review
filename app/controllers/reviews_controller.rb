@@ -31,6 +31,22 @@ class ReviewsController < ApplicationController
       end
       end
 
+      def edit
+        @review = Review.find(params[:id])
+      end
+
+      def update
+        @review = Review.find(params[:id])
+        @review.update(name: params[:review][:name])
+        flash[:message] = "Your review has been updated!"
+        redirect_to users_path
+      end
+
+      def destroy
+        Review.find(params[:id]).destroy
+        redirect_to reviews_path
+      end
+
     private
 
     def review_params
