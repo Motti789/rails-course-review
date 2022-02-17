@@ -2,8 +2,12 @@ class ReviewsController < ApplicationController
     # skip_before_action :verified_user, only: [:new, :create]
 
     def index
+      if params[:user_id]
+        @reviews = Review.where("user_id = ?", params[:user_id])
+      else
       @reviews = Review.all
     end
+  end
  
     
     
