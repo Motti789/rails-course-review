@@ -1,7 +1,14 @@
 <h2>Reviews Show Page</h2>
 
+<div class="container">
+<h1>Review for: <%= @review.course.name %></h1>
+<br>
+<h3>Title: <%= @review.title %></h3>
+<h3>Comment: <%= @review.comment %></h3>
+<br>
+</div>
 
-<h1><%= @review.name %></h1>
+<h3><%= link_to 'Return to the reviews page', reviews_path(current_user) %></h3>
 
-<h3>Category: <%= link_to @review.user.name, user_path(@review.user) if @user.review %></h3>
+
 

@@ -1,6 +1,8 @@
 Reviews Index page
 
 
+
+
     <div class="container">
     <% current_user.reviews %>
     <h4>Here are your reviews:</h4>
@@ -12,7 +14,7 @@ Reviews Index page
     <div>
     <ul>
         <p><li><strong>Course:</strong> <%= rev.course.name %></p></li>
-        <p><strong>Review title:</strong> <%= rev.name %></p>
+        <p><strong>Review title:</strong> <%= rev.title %></p>
             <% if current_user?(rev.user) %>
               <%= link_to "View", review_path(rev) %> |
               <%= link_to "Edit", edit_review_path(rev) %> |

@@ -12,38 +12,32 @@ class ReviewsController < ApplicationController
     end
 
     def create
-       #binding.pry
-         #@user = User.find_or_create_by(name: review_params[:review][:name])
-         @review = current_user.reviews.build(review_params)
-        if @review.save
-          redirect_to user_path(@review)
-        else
-          render 'new'
-        end
-        
+       @review = current_user.reviews.build(review_params)
+      if @review.save
+        redirect_to reviews_path(current_user)
+      else
+        render 'new'
       end
+    end
 
       def show
-        # @review = Review.find_by(id:params[:id])
-        # @user = current_user
-        if @review.blank?
-          redirect_to reviews_path
-      end
+       set_review
+       @user = current_user
       end
 
       def edit
-        @review = Review.find(params[:id])
+       set_review
       end
 
       def update
-        @review = Review.find(params[:id])
-        @review.update(name: params[:review][:name])
+        set_review
+        @review.update(review_params)
         flash[:message] = "Your review has been updated!"
-        redirect_to users_path
+        redirect_to reviews_path
       end
 
       def destroy
-        @review = Review.find(params[:id])
+        set_review
         @review.destroy
         flash[:message] = "Your review has been deleted!"
         redirect_to reviews_path
@@ -51,7 +45,11 @@ class ReviewsController < ApplicationController
 
     private
 
+    def set_review
+      @review = Review.find(params[:id])
+    end
+
     def review_params
-        params.require(:review).permit(:name, :course_id)
+        params.require(:review).permit(:title, :comment, :course_id)
     end
 end

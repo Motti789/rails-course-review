@@ -10,12 +10,18 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
           redirect_to user_path(@user), notice: "Signed up successfully"
         else  
-          # flash.now[:error] = @user.errors.full_messages
+          flash[:message] = "Email or password incorrect. Please try again."
           render :new
         end
     end
 
     def show
+      set_user
+    end
+
+    private
+
+    def set_user
       @user = User.find_by(id: params[:id])
     end
 
