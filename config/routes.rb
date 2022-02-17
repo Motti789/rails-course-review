@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :courses
   resources :reviews
+  
   # get '/reviews/new', to: 'reviews#new', as: 'new_review'
   
 

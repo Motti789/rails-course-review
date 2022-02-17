@@ -1,1 +1,25 @@
 Reviews Index page
+
+
+    <div class="container">
+    <% current_user.reviews %>
+    <h4>Here are your reviews:</h4>
+    
+    <br>
+
+</div>
+  <% current_user.reviews.each do |rev|%>
+    <div>
+    <ul>
+        <p><li><strong>Course:</strong> <%= rev.course.name %></p></li>
+        <p><strong>Review title:</strong> <%= rev.name %></p>
+            <% if current_user?(rev.user) %>
+              <%= link_to "View", review_path(rev) %> |
+              <%= link_to "Edit", edit_review_path(rev) %> |
+             <%= button_to 'Delete', rev, method: :delete, :onclick => "return confirm('Are you sure you want to delete this post?')" %>
+              </ul>
+          <% end %>
+          <% end %>
+          <br>
+          <%= link_to 'Return to the home page', user_path(current_user) %>
+    </div>
