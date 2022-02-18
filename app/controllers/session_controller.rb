@@ -2,7 +2,11 @@ class SessionController < ApplicationController
 
   
     def new
-      @user = User.new
+      if !logged_in?
+        @user = User.new
+      else
+       redirect_to user_path(current_user)
+      end
     end
   
     
@@ -23,5 +27,9 @@ class SessionController < ApplicationController
     def destroy
       session.delete("user_id")
       redirect_to root_path, notice: 'Logged Out'
+    end
+
+    def omniauth
+      binding.pry
     end
   end

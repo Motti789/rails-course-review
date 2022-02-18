@@ -1,14 +1,4 @@
-<br>
-<h2>New Review</h2>
-<br>
-
-<%if flash[:error]%>
-<%=flash[:error]%>
-<%end%>
-
 <%= form_for @review do |f| %>
-
-<%= f.hidden_field :user_id %>
 
    <div class="mb-3">
     
@@ -30,5 +20,4 @@
     <div class="mb-3">
      <%= f.submit "Submit Review", class: "btn btn-primary" %>
      </div>
-     <%= link_to 'Return to the home page', user_path(current_user) %>
 <%end%>

@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  
+  before_action :set_user, except: [:new, :create]
+    
     def new
+      if !logged_in?
      @user = User.new
+      else
+        redirect_to user_path(current_user)
+      end
     end
 
     def create
@@ -16,7 +21,6 @@ class UsersController < ApplicationController
     end
 
     def show
-      set_user
     end
 
     private

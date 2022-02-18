@@ -1,36 +1,32 @@
 class ReviewsController < ApplicationController
-    # skip_before_action :verified_user, only: [:new, :create]
+    before_action :set_review, except: [:new, :create]
 
     def index
-      if params[:user_id]
-        @reviews = Review.where("user_id = ?", params[:user_id])
-      else
-      @reviews = Review.all
+        @reviews = current_user.reviews.alpha.latest_reviews
     end
-  end
+  
  
     
     
     def new
-      @review = Review.new
+      @review = Review.new(user_id: params[:user_id])
     end
 
     def create
-       @review = current_user.reviews.build(review_params)
-      if @review.save
-        redirect_to reviews_path(current_user)
+      @user = current_user
+       @user.reviews.build(review_params)
+      if @user.save
+        redirect_to user_reviews_path(current_user)
       else
-        render 'new'
+        render :new
+        flash[:error] = "Title or review can not be empty. Please try again."
       end
     end
 
       def show
-       set_review
-       @user = current_user
       end
 
       def edit
-       set_review
       end
 
       def update
@@ -50,10 +46,10 @@ class ReviewsController < ApplicationController
     private
 
     def set_review
-      @review = Review.find(params[:id])
+      @review = Review.find_by(params[:id])
     end
 
     def review_params
-        params.require(:review).permit(:title, :comment, :course_id)
+        params.require(:review).permit(:title, :comment, :course_id, :user_id)
     end
 end
