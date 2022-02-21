@@ -9,16 +9,17 @@ class ReviewsController < ApplicationController
     
     
     def new
-      @review = Review.new(user_id: params[:user_id])
+      @user = current_user
+      @review = @user.reviews.build
+      # @review = Review.new(user_id: params[:user_id])
     end
 
     def create
       @user = current_user
-       @user.reviews.build(review_params)
-      if @user.save
-        redirect_to user_reviews_path(current_user)
-      else
-        render :new
+      @review = @user.reviews.build(review_params)
+       if @review.save
+        redirect_to reviews_path(@review)
+       else
         flash[:error] = "Title or review can not be empty. Please try again."
       end
     end
@@ -46,8 +47,12 @@ class ReviewsController < ApplicationController
     private
 
     def set_review
-      @review = Review.find_by(params[:id])
+      current_user
+      @review = Review.find_by(id: params[:id])
     end
+    
+    
+
 
     def review_params
         params.require(:review).permit(:title, :comment, :course_id, :user_id)

@@ -1,22 +1,7 @@
-<%= form_for @review do |f| %>
+<br>
+<h2>Edit Review</h2>
+<br>
 
-
-    <div class="mb-3">
-    <%= f.label :title %>
-    <br>
-    <%= f.text_field :title, class: "form-control", placeholder: "Username"%>
-     </div>
-
-     <div class="mb-3">
-    <%= f.label :comment %>
-    <br>
-    <%= f.text_field :comment, class: "form-control", placeholder: "Username"%>
-     </div>
-
-    
-    <div class="mb-3">
-     <%= f.submit "Edit Review", class: "btn btn-primary" %>
-     </div>
-     <%end%>
-
+<%= render 'form' %>
+<%= link_to 'Return to the home page', user_path(current_user) %>
      

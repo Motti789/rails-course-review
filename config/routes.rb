@@ -15,12 +15,14 @@ Rails.application.routes.draw do
   post '/users', to:'users#create'
   get '/users/:id', to: 'users#show', as: 'user'
   
-  resources :reviews
+  
   
   resources :users, only: [:new, :create, :show] do
     # nested resource for reviews
-    resources :reviews, only: [:new, :index]
+    resources :reviews
   end
+
+  resources :reviews
 
    
   

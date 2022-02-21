@@ -1,4 +1,10 @@
+<%if flash[:error]%>
+<%=flash[:error]%>
+<%end%>
+
 <%= form_for @review do |f| %>
+
+ <%= f.hidden_field :user_id %>
 
    <div class="mb-3">
     
@@ -20,4 +26,5 @@
     <div class="mb-3">
      <%= f.submit "Submit Review", class: "btn btn-primary" %>
      </div>
+     
 <%end%>
