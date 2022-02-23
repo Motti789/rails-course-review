@@ -16,9 +16,11 @@ Users have the ability to:
 
 
 # Usage
-Step 1) Run: rake db:migrate after cloning the repository.  **Enter**  
-Step 2) Run: rake db:seed.  **Enter**
-Step 3) Run: rails s.  **Enter**
+Step 1) Run: rake db:migrate after cloning the repository.  
+**Enter**  
+Step 2) Run: rake db:seed.  
+**Enter**
+Step 3) Run: rails s.  
  
 
 
