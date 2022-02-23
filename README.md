@@ -1,24 +1,26 @@
-# README
+# Course Review
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hello, and welcome to the course review app!
 
-Things you may want to cover:
+This is a simple CRUD/MVC app built with Ruby and the Rails framework that will allow a user to leave reviews on all of the courses they have learned in school.
 
-* Ruby version
+Users have the ability to:
 
-* System dependencies
+* Create a new account.
 
-* Configuration
+* Create and save new reviews.
 
-* Database creation
+* View all of their reviews.
 
-* Database initialization
+* Edit or delete reviews.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# Usage
+Step 1) Run: rake db:migrate after cloning the repository.
+Step 2) Run: rake db:seed
+Step 3) Run: rails s
 
-* Deployment instructions
 
-* ...
+
+# License
+The gem is available as open source under the terms of the MIT License.

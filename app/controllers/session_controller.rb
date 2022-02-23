@@ -29,17 +29,23 @@ class SessionController < ApplicationController
       redirect_to root_path, notice: 'Logged Out'
     end
 
+    
+
     def omniauth
-      user = User.find_or_create_by(uid: request.env['omniauth.auth'][:uid], provider: request.env['omniauth.auth'] [:provider]) do |u|
-        u.username = request.env['omniauth.auth'][:info][:first_name]
-        u.email = request.env['omniauth.auth'][:info][:email]
-        u.password = SecureRandom.hex(15) 
-      end 
-      if user.valid?
-        session[:user_id] = user.id
-        redirect_to user_path(user), notice: "Successfully logged in"
-      else
-        redirect_to login_path
-      end
+      binding.pry
     end
   end
+      # user = User.find_or_create_by(uid: request.env['omniauth.auth'][:uid], provider: request.env['omniauth.auth'] [:provider]) do |u|
+      #   u.username = request.env['omniauth.auth'][:info][:first_name]
+      #   u.email = request.env['omniauth.auth'][:info][:email]
+      #   u.password = SecureRandom.hex(15) 
+    #   end 
+    #   if user.valid?
+    #     session[:user_id] = user.id
+    #     redirect_to user_path(user), notice: "Successfully logged in"
+    #   else
+    #     redirect_to login_path
+    #   end
+    # end
+    
+  
