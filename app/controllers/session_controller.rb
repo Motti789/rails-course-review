@@ -1,5 +1,4 @@
 class SessionController < ApplicationController
-
   
     def new
       if !logged_in?
@@ -25,27 +24,33 @@ class SessionController < ApplicationController
     
   
     def destroy
-      session.delete("user_id")
+      session.clear
       redirect_to root_path, notice: 'Logged Out'
     end
 
     
 
-    def omniauth
-      binding.pry
-    end
+        def omniauth
+          @user = User.find_by(uid: auth['uid']) 
+          if @user
+            session[:user_id] = @user.id
+        
+            redirect_to user_path(@user), notice: "Successfully logged in"
+          else
+            
+            @user = User.create(uid: auth['uid'], name: auth['info']['nickname'], password: SecureRandom.hex(12))
+            session[:user_id] = @user.id
+            redirect_to user_path(@user), notice: "Successfully logged in"
+          end 
+        end
+
+    private
+
+  def auth
+    request.env['omniauth.auth']
   end
-      # user = User.find_or_create_by(uid: request.env['omniauth.auth'][:uid], provider: request.env['omniauth.auth'] [:provider]) do |u|
-      #   u.username = request.env['omniauth.auth'][:info][:first_name]
-      #   u.email = request.env['omniauth.auth'][:info][:email]
-      #   u.password = SecureRandom.hex(15) 
-    #   end 
-    #   if user.valid?
-    #     session[:user_id] = user.id
-    #     redirect_to user_path(user), notice: "Successfully logged in"
-    #   else
-    #     redirect_to login_path
-    #   end
-    # end
+end
+
+
     
   

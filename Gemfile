@@ -38,9 +38,7 @@ gem "jbuilder"
 
  gem 'dotenv-rails'
  gem 'omniauth'
- gem 'oauth2', "~> 1.4.9"
- 
- gem 'omniauth-google-oauth2'
+ gem 'omniauth-github'
  gem 'omniauth-rails_csrf_protection'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

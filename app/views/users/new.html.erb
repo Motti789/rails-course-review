@@ -15,6 +15,12 @@
      </div>
 
      <div class="mb-3">
+     <%= f.label :email %>
+    <br>
+    <%= f.text_field :email, class: "form-control", placeholder: "Email"%>
+     </div>
+
+     <div class="mb-3">
     <%= f.label :password %>
     <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
     </div>
@@ -24,6 +30,8 @@
 <%end%>
 <br>
 
-<h3>Or Signup with Google</h3>
+<h3>Or Sign up with GitHub</h3>
 
-<%= link_to 'Google', '/auth/google_oauth2', method: :post %>
+<%= link_to('Sign up with GitHub!', '/auth/github', method: :post) %>
+
+

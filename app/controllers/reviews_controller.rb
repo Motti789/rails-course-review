@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
       @user = current_user
       @review = @user.reviews.build
     end
+    
 
     def create
       @user = current_user

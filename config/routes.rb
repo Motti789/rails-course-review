@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'static#home'
 
   get '/signin', to: 'session#new', as: 'signin'
-  get '/auth/:provider/callback', to: 'session#omniauth'
+  get '/auth/github/callback' => 'session#omniauth'
   post '/signin', to: 'session#create'
   get '/session', to: 'session#destroy'
   
