@@ -6,16 +6,5 @@ class User < ApplicationRecord
 
  validates :name, presence: true
  validates :name, uniqueness: true
-
-#  helpers do
-
-#     def logged_in?
-#       !!current_user
-#     end
-
-#     def current_user
-#       @current_user ||= User.find_by(name: params[:user][:name])
-#     end
-  
-# end
 end
+

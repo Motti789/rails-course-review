@@ -34,10 +34,8 @@ class SessionController < ApplicationController
           @user = User.find_by(uid: auth['uid']) 
           if @user
             session[:user_id] = @user.id
-        
             redirect_to user_path(@user), notice: "Successfully logged in"
           else
-            
             @user = User.create(uid: auth['uid'], name: auth['info']['nickname'], password: SecureRandom.hex(12))
             session[:user_id] = @user.id
             redirect_to user_path(@user), notice: "Successfully logged in"
