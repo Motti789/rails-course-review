@@ -14,9 +14,11 @@ class UsersController < ApplicationController
           if @user.save
           session[:user_id] = @user.id
           redirect_to user_path(@user), notice: "Signed up successfully"
-        else  
-          flash[:message] = "Email or password incorrect. Please try again."
-          render :new
+        else 
+          flash[:error] = @user.errors.full_messages
+          redirect_to new_user_path
+          
+         
         end
      end
 

@@ -15,8 +15,11 @@ class SessionController < ApplicationController
 
         session[:user_id] = user.id
         redirect_to user_path(user), notice: "Successfully logged in"
+      elsif user == nil
+        flash[:error] = "User is empty"
+        redirect_to '/signin'
       else
-        flash[:message] = "Email or password incorrect. Please try again."
+        flash[:error] = "Password is empty"
         redirect_to '/signin'
       end
     end
