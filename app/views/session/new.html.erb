@@ -1,4 +1,3 @@
-<h1>Sign in Page</h1>
 <br>
 <%if flash[:error]%>
 <%=flash[:error]%>
@@ -26,6 +25,5 @@
 <%end%>
 <br>
 
-<h3>Or Login with GitHub</h3>
 
-<%= link_to('Log in with GitHub!', '/auth/github', method: :post) %>
+<p>Or Sign in with GitHub <%= link_to('here', '/auth/github', method: :post) %> </p>
