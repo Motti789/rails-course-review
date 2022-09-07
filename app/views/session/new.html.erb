@@ -32,26 +32,43 @@
                                     
 
                                 
-                            <div class="input-group">
+                                   <div class="input-group">
+                                   
                                       <div class="checkbox">
                                         <label>
-                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember Me
+                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember Me 
                                         </label>
+                                        
                                       </div>
                                     </div>
 
 
-                                <div style="margin-top:10px" class="form-group">
+                                <div style="margin-top:8px" class="form-group">
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls">
                                     <%= f.submit "Sign in", class:"btn btn-success" %>
-                                      <a id="btn-fblogin"  class="btn btn-primary" <%= link_to('Login with GitHub', '/auth/github', method: :post) %>>Login with GitHub</a>  
-                                      
+                                      <a id="btn-fblogin"  class="btn btn-primary" <%= link_to('Login with GitHub', '/auth/github', method: :post) %></a>  
+                                      <br></br>
                                       
                                     </div>
                                     <%end%>
                                 </div>
+
+                                   <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                            Don't have an account? 
+                                       <%= link_to('Sign up', '/signup', method: :get) %> 
+                                        </div>
+                                    </div>
+                                </div>    
+                            </form>     
+
+
+
+                        </div>                     
+                    </div>  
 
                                 
 
