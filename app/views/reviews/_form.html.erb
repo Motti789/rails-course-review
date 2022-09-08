@@ -6,25 +6,55 @@
 
  <%= f.hidden_field :user_id %>
 
-   <div class="mb-3">
-    
+   <div class="mb-3" id="review-title">
     <br>
-    <%= f.text_field :title, class: "form-control", placeholder: "Review Title."%>
-     </div>
-    <div class="mb-3">
-    
-    <br>
-    <%= f.text_area :comment, class: "form-control", placeholder: "Write your review here."%>
+    <%= f.text_field :title, class: "form-control", placeholder: "Review Title.", required: "required"%>
      </div>
 
-     <div >
-     Course: <%= f.collection_select :course_id, Course.order(:name), :id, :name %>
+    <div class="mb-3" id="review">
+    <%= f.text_area :comment, class: "form-control", placeholder: "Write your review here.", required: "required"%>
+     </div>
 
+     <div id="course-selection">
+      <%= f.collection_select  :course_id, Course.order(:name), :id, :name, :include_blank => "Please select course"%>
      </div>
      <br>
 
-    <div class="mb-3">
-     <%= f.submit "Submit Review", class: "btn btn-primary" %>
+    <div class="mb-3" id="submit-button">
+     <%= f.submit "Submit Review", class: "btn btn-light" %>
      </div>
      
 <%end%>
+
+
+
+<style>
+  #review-title {
+   width: 30%;
+   margin-left: 400px;
+  };
+</style>
+
+  
+  <style>
+    #review {
+      width: 70%;
+      margin-left: 180px;
+    };
+  </style>
+
+
+
+  <style>
+    #course-selection {
+      margin-left: 475px;
+    }
+  </style>
+
+  <style>
+  #submit-button {
+    margin-left: 495px;
+  }
+  </style>
+
+
