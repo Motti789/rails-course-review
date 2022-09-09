@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:new, :create]
     
-    def new
+    
+  def new
       if !logged_in?
        @user = User.new
       else

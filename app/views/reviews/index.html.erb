@@ -2,32 +2,38 @@
   <div class="container">
     
      <% if current_user.reviews.present? %>
-    <h4>Here are your reviews:</h4>
+     <br>
+    <h4>You currently have <%= @reviews.length %> reviews  </h4>
+   
     
-    <br>
     
     
   <% @reviews.each do |rev|%>
     
     <ul>
-        <p><li><strong>Course:</strong> <%= rev.course.name %></p></li>
-        <p><strong>Review title:</strong> <%= rev.title %></p>
-        <p>Posted: <%= rev.created_at.strftime('%B %d, %Y') %> </p> 
+        <p><li><strong>Course:</strong> <%= rev.course.name %> <br> 
+        <strong>Review title:</strong> <%= rev.title %> <br>
+        <strong>Posted:</strong> <%= rev.created_at.strftime('%B %d, %Y') %></li> </p> 
               
-              <%= link_to "View", review_path(rev), :class => "btn btn-light" %> |
-              <%= link_to "Edit", edit_review_path(rev) %> |
-              <%= link_to "New", new_user_review_path(rev) %> |   
-             <%= link_to "Delete", rev, data: {
-                 turbo_method: :delete,
+              <%= link_to "View", review_path(rev), :class => "btn btn-light" %> 
+              <%= link_to "Edit", edit_review_path(rev), :class => "btn btn-light" %> 
+              <%= link_to "New", new_user_review_path(rev), :class => "btn btn-light" %>    
+              <%= link_to "Delete", rev, :class => "btn btn-light", data: {
+                 turbo_method: :delete, 
                  turbo_confirm: "Are you sure?"
                  } %>
+                 <div style="padding-top:50px">
               </ul>
               
           
           <% end %>
+          </div>
           <br>
-          <%= link_to 'Return to the home page', user_path(current_user) %>
-    </div>
+
+          <%# <div id="return-button">
+          <%= link_to 'Return to the home page', user_path(current_user), :class => "btn btn-info" %>
+          <%# </div> %>
+
     <% else %> 
     <div class="no-reviews">
     <h2>No reviews yet.</h2>
@@ -43,3 +49,20 @@
   right: 625px;
 }
 </style>
+
+<style>
+.container {
+  top: 30px;
+  float: left;  
+}
+
+</style>
+
+<%# <style> 
+
+  #return-button {
+  position: absolute;
+  top: 400px;
+  right: 25px;
+  }
+</style> %>

@@ -1,16 +1,33 @@
-<h2>Reviews Show Page</h2>
 
-<div class="container">
 
-<h1>Review for: <%= current_user.name %></h1>
-<br>
+<div class="container-show">
+
+<h2>Username: <%= current_user.name %></h2>
+
 <h3>Title: <%= @review.title %> </h3>
 <h3>Comment: <%= @review.comment %></h3>
 <br>
 </div>
 
-<h3><%= link_to 'Return to the reviews page', reviews_path(current_user) %></h3>
+<div id="return-button">
+<h3><%= link_to 'Return to the reviews page', reviews_path(current_user), :class => "btn btn-info" %></h3>
+<div>
 
+<style>
+.container-show {
+ width: 70%;
+ margin-left: 410px;
+ margin-top: 180px;
+
+};
+</style>
+
+<style>
+  #return-button {
+  margin-left: 420px;
+  }
+
+</style>
 
 
 
