@@ -14,13 +14,11 @@ class SessionController < ApplicationController
       if user && user.authenticate(params[:user][:password])
 
         session[:user_id] = user.id
-        redirect_to user_path(user), notice: "Successfully logged in"
-      elsif user == nil
-        flash[:error] = "User is empty"
-        redirect_to '/signin'
-      else
-        flash[:error] = "Password is empty"
-        redirect_to '/signin'
+        flash.notice = "Successfully logged in"
+        redirect_to user_path(user)
+      else user == nil
+        flash.alert = "Username or password don't match. Please try again."
+          redirect_to '/signin'
       end
     end
   

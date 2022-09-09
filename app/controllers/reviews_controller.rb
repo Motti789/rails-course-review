@@ -18,11 +18,9 @@ class ReviewsController < ApplicationController
       @user = current_user
       @review = @user.reviews.build(review_params)
        if @review.save
-        redirect_to reviews_path(@review)
         flash[:message] = "Your review has been created!"
-       else
-        render :new
-        flash[:error] = "Title or review can not be empty. Please try again."
+        redirect_to reviews_path(@review)
+       
       end
     end
 
