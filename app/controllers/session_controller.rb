@@ -26,7 +26,8 @@ class SessionController < ApplicationController
   
     def destroy
       session.clear
-      redirect_to root_path, notice: 'Logged Out'
+      flash.notice = 'Logged Out'
+      redirect_to root_path
     end
 
     
