@@ -15,7 +15,7 @@ Users have the ability to:
 * Edit or delete reviews.
 
 ## Demo
-[Course Review](https://www.youtube.com/watch?v=6-BBI8jJbEY)
+[Course Review](https://youtu.be/RQdk9YKvdpg)
 
 
 ## Getting Started
