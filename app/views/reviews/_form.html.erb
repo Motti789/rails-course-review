@@ -2,27 +2,28 @@
 <%=flash[:error]%>
 <%end%>
 
-<%= form_for @review do |f| %>
 
+<%= form_for @review do |f| %>
  <%= f.hidden_field :user_id %>
 
    <div class="mb-3" id="review-title">
-    <br>
-    <%= f.text_field :title, class: "form-control", placeholder: "Review Title.", required: "required"%>
-     </div>
+     <br>
+     <%= f.text_field :title, class: "form-control", placeholder: "Review Title.", required: "required"%>
+   </div>
 
     <div class="mb-3" id="review">
-    <%= f.text_area :comment, class: "form-control", placeholder: "Write your review here.", required: "required"%>
-     </div>
+      <%= f.text_area :comment, class: "form-control", placeholder: "Write your review here.", required: "required"%>
+    </div>
 
-     <div id="course-selection">
+    <div id="course-selection">
       <%= f.collection_select  :course_id, Course.order(:name), :id, :name, :include_blank => "Please select course"%>
-     </div>
+    </div>
+
      <br>
 
     <div class="mb-3" id="submit-button">
      <%= f.submit "Submit Review", class: "btn btn-light" %>
-     </div>
+    </div>
      
 <%end%>
 

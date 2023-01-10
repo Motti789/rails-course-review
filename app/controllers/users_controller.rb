@@ -10,20 +10,20 @@ class UsersController < ApplicationController
       end
     end
 
-      def create
-        @user = User.new(user_params)
-          if @user.save
-          session[:user_id] = @user.id
-          flash.notice = "Account created successfully"
-          redirect_to user_path(@user)
-        else 
-          flash.notice = "That didn't work please try again"
-          redirect_to new_user_path
-        end
-     end
-
-    def show
+  def create
+    @user = User.new(user_params)
+      if @user.save
+      session[:user_id] = @user.id
+      flash.notice = "Account created successfully"
+      redirect_to user_path(@user)
+    else 
+      flash.notice = "That didn't work please try again"
+      redirect_to new_user_path
     end
+  end
+
+  def show
+  end
 
     private
 

@@ -4,8 +4,10 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+
         <% if !logged_in? %>
         <a class="nav-link active" aria-current="page" href='/'>Home</a>
         <a class="nav-link active" aria-current="page" href='/signup'>Sign Up</a>
@@ -14,9 +16,6 @@
         <a class="nav-link active" aria-current="page" href=' /users/:user_id/reviews'>All Reviews</a>
         <a class="nav-link active" aria-current="page" href='/session/'>Log Out</a>
         <%end%>
-        
-        
-        
         
       </div>
     </div>

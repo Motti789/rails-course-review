@@ -22,7 +22,6 @@ class SessionController < ApplicationController
       end
     end
   
-    
   
     def destroy
       session.clear
@@ -31,26 +30,21 @@ class SessionController < ApplicationController
     end
 
     
-
-        def omniauth
-          @user = User.find_by(uid: auth['uid']) 
-          if @user
-            session[:user_id] = @user.id
-            redirect_to user_path(@user), notice: "Successfully logged in"
-          else
-            @user = User.create(uid: auth['uid'], name: auth['info']['nickname'], password: SecureRandom.hex(12))
-            session[:user_id] = @user.id
-            redirect_to user_path(@user), notice: "Successfully logged in"
-          end 
-        end
+    def omniauth
+      @user = User.find_by(uid: auth['uid']) 
+      if @user
+        session[:user_id] = @user.id
+        redirect_to user_path(@user), notice: "Successfully logged in"
+      else
+        @user = User.create(uid: auth['uid'], name: auth['info']['nickname'], password: SecureRandom.hex(12))
+        session[:user_id] = @user.id
+        redirect_to user_path(@user), notice: "Successfully logged in"
+      end 
+    end
 
     private
 
-  def auth
-    request.env['omniauth.auth']
-  end
-end
-
-
-    
-  
+   def auth
+     request.env['omniauth.auth']
+   end
+ end
